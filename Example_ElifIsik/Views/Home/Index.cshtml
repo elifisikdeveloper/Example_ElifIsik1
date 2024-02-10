@@ -1,0 +1,95 @@
+﻿@model Example_ElifIsik.Dtos.MaterialModel
+
+@{
+    ViewData["Title"] = "Create Material";
+}
+
+<h2>Create Material</h2>
+
+<form asp-action="Index" asp-controller="Home" method="post">
+    <div class="form-group">
+        <label asp-for="ItemCode">Item Code:</label>
+        <input asp-for="ItemCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ItemName">Item Name:</label>
+        <input asp-for="ItemName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MainUom">Main UOM:</label>
+        <input asp-for="MainUom" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdR_Status">AdR Status:</label>
+        <input asp-for="AdR_Status" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductBarcode">Product Barcode:</label>
+        <input asp-for="ProductBarcode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductBarcodeCS">Product Barcode CS:</label>
+        <input asp-for="ProductBarcodeCS" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UnitWeight">Unit Weight:</label>
+        <input asp-for="UnitWeight" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Width">Width:</label>
+        <input asp-for="Width" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Length_">Length:</label>
+        <input asp-for="Length_" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Height">Height:</label>
+        <input asp-for="Height" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BrandCode">Brand Code:</label>
+        <input asp-for="BrandCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <h4>Unit 2</h4>
+
+        <div class="form-group">
+            <label>Main UOM:</label>
+            <input asp-for="@Model.Unit2[0].MainUom" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Main UOM Code:</label>
+            <input asp-for="@Model.Unit2[0].MainUomCode" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Conversion UOM:</label>
+            <input asp-for="@Model.Unit2[0].ConversionUom" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Conversion UOM Code:</label>
+            <input asp-for="@Model.Unit2[0].ConversionUomCode" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Conversion Qty:</label>
+            <input asp-for="@Model.Unit2[0].ConversionQty" class="form-control" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
