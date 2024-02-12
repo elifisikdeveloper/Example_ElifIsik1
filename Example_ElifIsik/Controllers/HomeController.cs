@@ -30,31 +30,30 @@ namespace Example_ElifIsik.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(MaterialModel model)
         {
-            try
-            {
-                var token = "axJgnrHEziivwAWfEFGqTcbKFhTaM"; 
+            var token = "axJgnrHEziivwAWfEFGqTcbKFhTaM";
 
-                var client = _httpClientFactory.CreateClient(token);
+            using (var client = _httpClientFactory.CreateClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 var jsonData = JsonConvert.SerializeObject(model);
 
-                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                var responseMessage = await client.PostAsync("http://testapi.dogruer.com/api/MaterialMaster/SaveMaterialMaster", content);
-
-                if (responseMessage.IsSuccessStatusCode)
+                using (var content = new StringContent(jsonData, Encoding.UTF8, "application/json"))
                 {
-                    return RedirectToAction("Index");
-                }
+                    var responseMessage = await client.PostAsync("http://testapi.dogruer.com/api/MaterialMaster/SaveMaterialMaster", content);
 
-                return View(model);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-               
-                return View(model);
-            }
+
+            ModelState.AddModelError("", "İşlem gerçekleştirilemedi. Lütfen daha sonra tekrar deneyin.");
+            return View(model);
         }
+
+
 
 
 
