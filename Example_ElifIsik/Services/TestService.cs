@@ -14,6 +14,7 @@ namespace Example_ElifIsik.Services
         {
             _httpClientFactory = httpClientFactory;
         }
+        //servis kullarak da denemiştim.
         public async Task<bool> AddTestAsync(MaterialModel model, string token)
         {
             try
@@ -39,12 +40,10 @@ namespace Example_ElifIsik.Services
 
                         if (response.IsSuccessStatusCode)
                         {
-                            // Başarılı bir yanıt durumunda ek işlemler yapılabilir
                             return true;
                         }
                         else
                         {
-                            // Yanıt durumu başarısız ise hatanın nedenini belirlemek için yanıt içeriğini kontrol edebilirsiniz
                             throw new HttpRequestException($"HTTP request failed with status code {response.StatusCode}. Response content: {responseContent}");
                         }
                     }
@@ -52,7 +51,6 @@ namespace Example_ElifIsik.Services
             }
             catch (Exception ex)
             {
-                // Oluşan hataları işlemek için uygun bir şekilde ele alın
                 throw new Exception("An error occurred while processing the HTTP request: " + ex.Message);
             }
         }

@@ -32,9 +32,9 @@ namespace Example_ElifIsik.Controllers
         {
             var token = "axJgnrHEziivwAWfEFGqTcbKFhTaM";
 
-            using (var client = _httpClientFactory.CreateClient())
+            using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( token);
 
                 var jsonData = JsonConvert.SerializeObject(model);
 
